@@ -2,13 +2,17 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
 
-# Database Connection
-DB_HOST = 'localhost'
-DB_PORT = '5432'
-DB_NAME = 'health_data'
-DB_USER = 'postgres'
-DB_PASSWORD = 'pokemon'
+
+load_dotenv()
+
+DB_HOST = os.getenv('DB_HOST')
+DB_NAME = os.getenv('DB_NAME')
+DB_USER = os.getenv('DB_USER')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
+
 
 engine = create_engine(f'postgresql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}')
 
